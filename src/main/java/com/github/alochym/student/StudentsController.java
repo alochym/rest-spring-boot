@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/v1/students")
 public class StudentsController {
 
-    @GetMapping // http request GET method.
+    // full URI "api/v1/student/"
+    @RequestMapping(value = "/", method = RequestMethod.GET) // http request GET method.
     public List<String> findAllStudents() {
         String hoanStudent = "{\"id\": 1,\"name\": \"Le Thien Hoan\",\"email\":\"hoanle13@gmail.com\"}";
         String thanhStudent = "{\"id\": 2,\"name\": \"Le Thien Thanh\",\"email\":\"thanhle13@gmail.com\"}";
