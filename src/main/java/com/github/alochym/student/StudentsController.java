@@ -1,7 +1,11 @@
 package com.github.alochym.student;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,30 +21,75 @@ public class StudentsController {
 
     // full URI "api/v1/student/"
     @RequestMapping(value = "/", method = RequestMethod.GET) // http request GET method.
-    public List<String> findAllStudents() {
+    public ResponseEntity<?> findAllStudents() {
         String hoanStudent = "{\"id\": 1,\"name\": \"Le Thien Hoan\",\"email\":\"hoanle13@gmail.com\"}";
         String thanhStudent = "{\"id\": 2,\"name\": \"Le Thien Thanh\",\"email\":\"thanhle13@gmail.com\"}";
-        return List.of(hoanStudent, thanhStudent);
+        List<String> result = new ArrayList<>();
+        result.add(hoanStudent);
+        result.add(thanhStudent);
+
+        // custom headers response
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Server", "Spring Boot RESTful API");
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/{id}") // http request GET method by using http request path.
-    public String findStudentsById(@PathVariable String id) {
+    public ResponseEntity<?> findStudentsById(@PathVariable Integer id) {
         // public String findStudentsById(@PathVariable("id") String id) {
-        return "Get a Student by ID";
+
+        // custom headers response
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Server", "Spring Boot RESTful API");
+
+        // Test response 404 - not found
+        if (id == 3) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return new ResponseEntity<>("Get a Student by ID", headers, HttpStatus.OK);
     }
 
-    @PostMapping // http request POST method.
-    public String createStudents() {
-        return "Create a Student";
+    @PostMapping("/") // http request POST method.
+    public ResponseEntity<?> createStudents() {
+        // custom headers response
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Server", "Spring Boot RESTful API");
+
+        return new ResponseEntity<>("Create a Student", HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}") // http request PUT method.
-    public String updateStudents(@PathVariable String id) {
-        return "Update a Student by ID";
+    public ResponseEntity<?> updateStudents(@PathVariable Integer id) {
+        // custom headers response
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Server", "Spring Boot RESTful API");
+
+        // Test response 404 - not found
+        if (id == 3) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return new ResponseEntity<>("Update a Student by ID", HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}") // http request DELETE method.
-    public String deleteStudents(@PathVariable String id) {
-        return "Delete a Student by ID";
+    public ResponseEntity<?> deleteStudents(@PathVariable Integer id) {
+        // custom headers response
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Server", "Spring Boot RESTful API");
+
+        // Test response 404 - not found
+        if (id == 3) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return new ResponseEntity<>("Delete a Student by ID", HttpStatus.ACCEPTED);
     }
 }
