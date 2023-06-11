@@ -23,7 +23,7 @@
 ## Spring Boot Access Log
 
 1. Logging to console.
-1. Add dependency `logback-access` and `loggstash-logback-encoder`.
+1. Add dependency `logback-access` and `loggstash-logback-encoder` to a [pom.xml](./pom.xml).
 
    ```xml
     <dependency>
@@ -43,7 +43,7 @@
     1. Logger.
     1. Appender.
     1. Layout.
-1. Add `@Bean` for logback-access to tomcat web server log
+1. Add [AccessLogsConfiguration.java](/src/main/java/com/github/alochym/AccessLogsConfiguration.java) for logback-access to tomcat web server log
 
    ```java
     package com.github.alochym;
