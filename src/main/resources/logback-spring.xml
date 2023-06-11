@@ -1,0 +1,21 @@
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <logger name="com.github.alochym" level="error">
+        <appender-ref ref="stdout" />
+    </logger>
+    <logger name="com.github.alochym" level="warn">
+        <appender-ref ref="stdout" />
+    </logger>
+    <logger name="com.github.alochym" level="info">
+        <appender-ref ref="stdout" />
+    </logger>
+    <logger name="com.github.alochym" level="debug">
+        <appender-ref ref="stdout" />
+    </logger>
+    <logger name="com.github.alochym" level="trace">
+        <appender-ref ref="stdout" />
+    </logger>
+</configuration>

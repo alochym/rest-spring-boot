@@ -1,0 +1,27 @@
+<configuration debug="false">
+    <appender name="accessJsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.AccessEventCompositeJsonEncoder">
+            <providers>
+                <timestamp />
+                <pattern>
+                    <!-- https://jira.qos.ch/browse/LOGBACK-1229 - bytesSent bug -->
+                    <pattern>
+                        {
+                        "user_agent": "%i{User-Agent}",
+                        "client-host" : "%clientHost",
+                        "remote-user" : "%user",
+                        "request-method" : "%requestMethod",
+                        "request-url" : "%requestURL",
+                        "request-uri" : "%requestURI",
+                        "status-code" : "#asLong{%statusCode}" ,
+                        "bytes-sent" : "#asLong{%bytesSent}",
+                        "elapsed-time" : "#asLong{%elapsedTime}",
+                        "protocol" : "%protocol"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+    <appender-ref
+        ref="accessJsonConsoleAppender" /> ​ </configuration>
