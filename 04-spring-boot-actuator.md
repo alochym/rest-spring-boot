@@ -27,6 +27,7 @@
 
 ## Create Custom Metrics
 
+- [Getting started](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#actuator.metrics.getting-started).
 - [Prometheus metric types](https://prometheus.io/docs/concepts/metric_types/).
     1. Counter. Example of [StudentController](/src/main/java/com/github/alochym/student/StudentsController.java) with URL `api/v1/student/`.
         1. Create a Counter - `studentCounter`.
@@ -35,7 +36,10 @@
     1. Gauge.
     1. Histogram.
     1. Summary.
-
+- [Micrometer metric Types]().
+    1. [Counter](https://micrometer.io/docs/concepts#_counters).
+    1. [Gauges](https://micrometer.io/docs/concepts#_gauges).
+    1. [Timer](https://micrometer.io/docs/concepts#_timers).
 ## Enable Tracing
 
 - TODO in future.
