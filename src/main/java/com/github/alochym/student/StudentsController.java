@@ -17,11 +17,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+
 @RestController
 @RequestMapping("api/v1/students")
 public class StudentsController {
 
     private Logger logger = LoggerFactory.getLogger(StudentsController.class);
+
+    // Create a Prometheus student_counter_request_total Counter
+    private Counter studentCounter;
+
+    // Initial a StudentController with student_counter to
+    // register to MeterRegistry
+    public StudentsController(MeterRegistry meterRegistry) {
+        this.studentCounter = Counter
+                .builder("student_counter")
+                .tag("version", "v1")
+                .description("Example Counter Student")
+                .register(meterRegistry);
+    }
 
     // full URI "api/v1/student/"
     @RequestMapping(value = "/", method = RequestMethod.GET) // http request GET method.
@@ -43,6 +59,9 @@ public class StudentsController {
         logger.info(headers.toString());
         logger.debug(headers.toString());
         logger.trace(headers.toString());
+
+        // increase studentCounter by 1;
+        this.studentCounter.increment();
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

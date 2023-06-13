@@ -36,6 +36,21 @@
 		</dependency>
 		<!-- logback-access END -->
 
+		<!-- spring boot actuator START -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- spring boot actuator END -->
+
+		<!-- spring boot actuator prometheus START -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- spring boot actuator prometheus END -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
