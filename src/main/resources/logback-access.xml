@@ -23,5 +23,5 @@
             </providers>
         </encoder>
     </appender>
-    <appender-ref
+<appender-ref
         ref="accessJsonConsoleAppender" /> ​ </configuration>

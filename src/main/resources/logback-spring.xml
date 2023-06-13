@@ -3,19 +3,26 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
-    <logger name="com.github.alochym" level="error">
+    <logger name="com.github.alochym" level="error" additivity="false">
         <appender-ref ref="stdout" />
     </logger>
-    <logger name="com.github.alochym" level="warn">
+    <logger name="com.github.alochym" level="warn" additivity="false">
         <appender-ref ref="stdout" />
     </logger>
-    <logger name="com.github.alochym" level="info">
+    <logger name="com.github.alochym" level="info" additivity="false">
         <appender-ref ref="stdout" />
     </logger>
-    <logger name="com.github.alochym" level="debug">
+    <logger name="com.github.alochym" level="debug" additivity="false">
         <appender-ref ref="stdout" />
     </logger>
-    <logger name="com.github.alochym" level="trace">
+    <logger name="com.github.alochym" level="trace" additivity="false">
         <appender-ref ref="stdout" />
     </logger>
+    <!-- 
+        additivity="false"
+        https://stackoverflow.com/questions/24180772/logback-logger-logging-twice
+     -->
+    <root level="info">
+        <appender-ref ref="stdout" />
+    </root>
 </configuration>
