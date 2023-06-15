@@ -20,3 +20,6 @@
 1. curl.exe -XPOST localhost:8080/api/v1/students/1 -d @thanh-post.json
 1. curl.exe -XPUT localhost:8080/api/v1/students/1 -d @hoan-put.json
 1. curl.exe -XDELETE localhost:8080/api/v1/students/1
+1. curl.exe -H "Content-Type: application/json" -XPOST localhost:8080/api/v1/users -d @user-hoan-post.json -vvv
+1. curl.exe -H "Content-Type: application/json" -XPOST localhost:8080/api/v1/users -d @user-thanh-post.json -vvv
+1. curl.exe -H "Content-Type: application/json" -XPUT localhost:8080/api/v1/users/{id} -d @user-hoan-put.json -vvv
