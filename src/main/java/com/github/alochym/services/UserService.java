@@ -9,7 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.github.alochym.entities.UserModel;
+import com.github.alochym.errors.NotFoundException;
 import com.github.alochym.repositories.UserRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class UserService {
@@ -37,7 +40,7 @@ public class UserService {
         return new ResponseEntity<>(result, this.customHttpHeaders(), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> findById(int id) {
+    public ResponseEntity<?> findById(int id, HttpServletRequest request) {
 
         UserModel result = this.userRepository.findById(id);
 
@@ -46,14 +49,14 @@ public class UserService {
             logger.info("User ID: {} is not found", id);
             // should be doing Response DTO.
             // return ResponseEntity.notFound().build();
-            return new ResponseEntity<>(null, this.customHttpHeaders(), HttpStatus.NOT_FOUND);
+            throw new NotFoundException(HttpStatus.NOT_FOUND.getReasonPhrase());
         }
 
         // should be doing Response DTO. result.toUserResponse().
         return new ResponseEntity<>(result, this.customHttpHeaders(), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> findByEmail(String e) {
+    public ResponseEntity<?> findByEmail(String e, HttpServletRequest request) {
 
         UserModel result = this.userRepository.findByEmail(e);
 
@@ -62,7 +65,7 @@ public class UserService {
             logger.info("User Name: {} is not found", e);
             // should be doing Response DTO.
             // return ResponseEntity.notFound().build();
-            return new ResponseEntity<>(null, this.customHttpHeaders(), HttpStatus.NOT_FOUND);
+            throw new NotFoundException(HttpStatus.NOT_FOUND.getReasonPhrase());
         }
 
         // should be doing Response DTO. result.toUserResponse().
@@ -76,7 +79,7 @@ public class UserService {
         return new ResponseEntity<>(this.userRepository.save(u), this.customHttpHeaders(), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> updateById(UserModel u) {
+    public ResponseEntity<?> updateById(UserModel u, HttpServletRequest request) {
 
         UserModel temp = this.userRepository.update(u);
 
@@ -91,7 +94,7 @@ public class UserService {
         return new ResponseEntity<>(null, this.customHttpHeaders(), HttpStatus.NO_CONTENT);
     }
 
-    public ResponseEntity<?> deleteById(int id) {
+    public ResponseEntity<?> deleteById(int id, HttpServletRequest request) {
 
         UserModel result = this.userRepository.delete(id);
 

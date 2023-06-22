@@ -17,6 +17,8 @@ import com.github.alochym.entities.UserCreateRequest;
 import com.github.alochym.entities.UserUpdateRequest;
 import com.github.alochym.services.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
@@ -33,16 +35,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable("id") int id) {
-        return this.userService.findById(id);
+    public ResponseEntity<?> findById(@PathVariable("id") int id, HttpServletRequest request) {
+        return this.userService.findById(id, request);
     }
 
     @GetMapping("/find")
-    public ResponseEntity<?> findByEmail(@RequestParam(name = "email", required = true) String email) {
+    public ResponseEntity<?> findByEmail(@RequestParam(name = "email", required = true) String email,
+            HttpServletRequest request) {
 
         logger.info("Find an Email: {}", email);
 
-        return this.userService.findByEmail(email);
+        return this.userService.findByEmail(email, request);
     }
 
     @PostMapping
@@ -54,15 +57,16 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateById(@PathVariable("id") int id, @RequestBody UserUpdateRequest reqUpdate) {
+    public ResponseEntity<?> updateById(@PathVariable("id") int id, @RequestBody UserUpdateRequest reqUpdate,
+            HttpServletRequest request) {
 
         logger.info(reqUpdate.toString());
 
-        return this.userService.updateById(reqUpdate.toUserModel(id));
+        return this.userService.updateById(reqUpdate.toUserModel(id), request);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
-        return this.userService.deleteById(id);
+    public ResponseEntity<?> deleteById(@PathVariable("id") int id, HttpServletRequest request) {
+        return this.userService.deleteById(id, request);
     }
 }
