@@ -58,6 +58,10 @@
 		</dependency>
 
 		<!-- Spring Boot Devtools -->
+		<!-- 
+			the field "trace" is present in ErrorException 
+			if you have "spring-boot-devtools" in your dependencies. 
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
