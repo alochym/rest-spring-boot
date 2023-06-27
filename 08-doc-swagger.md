@@ -8,7 +8,7 @@
 
 1. Add `Info`.
 1. Add `Server`.
-1. Add `Tags`.
+1. Add `Tags Declarations`.
 1. Add `Path`.
 1. Add `Operation`.
     1. Path `users`
