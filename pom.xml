@@ -23,6 +23,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Validation START -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!-- Validation END -->
+
 		<!-- logback-access START -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
