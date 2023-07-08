@@ -50,6 +50,9 @@
 - `SELECT id, username, password, email from users`.
 - `SELECT id, username, password, email from users where id=1`.
 - [JOIN TABLES](https://www.postgresql.org/docs/14/tutorial-join.html).
+
+![SQL JOIN](/images/sql-join.jpg)
+
 - [LIMIT AND OFFSET](https://www.postgresql.org/docs/14/queries-limit.html).
 
 ### INSERT
