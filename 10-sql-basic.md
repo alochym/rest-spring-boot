@@ -1,5 +1,6 @@
 # SQL Basic
 
+- [MySQL Course Free](https://planetscale.com/courses/mysql-for-developers/introduction/course-introduction).
 - Using PostgreSQL version 14 as primary Database.
 - [CONSTRAINTS](https://www.postgresql.org/docs/14/ddl-constraints.html).
 - [PRIMARY KEY](https://www.postgresql.org/docs/14/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS).
@@ -49,6 +50,9 @@
 - `SELECT id, username, password, email from users`.
 - `SELECT id, username, password, email from users where id=1`.
 - [JOIN TABLES](https://www.postgresql.org/docs/14/tutorial-join.html).
+
+![SQL JOIN](/images/sql-join.jpg)
+
 - [LIMIT AND OFFSET](https://www.postgresql.org/docs/14/queries-limit.html).
 
 ### INSERT
