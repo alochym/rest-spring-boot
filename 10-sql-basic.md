@@ -1,5 +1,6 @@
 # SQL Basic
 
+- [MySQL Course Free](https://planetscale.com/courses/mysql-for-developers/introduction/course-introduction).
 - Using PostgreSQL version 14 as primary Database.
 - [CONSTRAINTS](https://www.postgresql.org/docs/14/ddl-constraints.html).
 - [PRIMARY KEY](https://www.postgresql.org/docs/14/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS).
